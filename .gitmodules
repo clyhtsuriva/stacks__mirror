@@ -3,4 +3,4 @@
 	url = https://git.adjutor.xyz/docker-acid-banger.git
 [submodule "searxng-docker"]
 	path = searxng-docker
-	url = https://github.com/searxng/searxng-docker.git
+	url = https://github.com/clyhtsuriva/searxng-docker.git
