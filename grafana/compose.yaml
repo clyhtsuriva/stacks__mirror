@@ -12,30 +12,18 @@ services:
     volumes:
       - grafana-data:/var/lib/grafana
       - ${GRAFANA_CONFIG_PATH}:/etc/grafana/grafana.ini
+    env_file:
+      - .env  # Load all variables from .env automatically
     restart: unless-stopped
     environment:
-      # Static values (unchanged from your original)
+      # Static configurations (not in .env)
       GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
       GF_AUTH_GENERIC_OAUTH_NAME: authentik
       GF_AUTH_GENERIC_OAUTH_SCOPES: openid profile email
-      # Optionally enable auto-login (bypasses Grafana login screen)
       GF_AUTH_OAUTH_AUTO_LOGIN: "true"
-      # Optionally map user groups to Grafana roles
       GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: >
         contains(groups, 'Grafana Admins') && 'Admin' ||
         contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
 
-      # Dynamic values (from .env)
-      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: ${GF_AUTH_GENERIC_OAUTH_CLIENT_ID}
-      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: ${GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET}
-      # Behind a reverse proxy :
-      GF_SERVER_ROOT_URL: ${GF_SERVER_ROOT_URL}
-      GF_AUTH_GENERIC_OAUTH_AUTH_URL: ${GF_AUTH_GENERIC_OAUTH_AUTH_URL}
-      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: ${GF_AUTH_GENERIC_OAUTH_TOKEN_URL}
-      GF_AUTH_GENERIC_OAUTH_API_URL: ${GF_AUTH_GENERIC_OAUTH_API_URL}
-      GF_AUTH_SIGNOUT_REDIRECT_URL: ${GF_AUTH_SIGNOUT_REDIRECT_URL}
-
-    env_file:
-      - .env
 networks: {}
 ...
