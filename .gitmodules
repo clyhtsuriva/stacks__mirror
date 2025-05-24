@@ -1,0 +1,6 @@
+[submodule "docker-acid-banger"]
+	path = docker-acid-banger
+	url = https://git.adjutor.xyz/docker-acid-banger.git
+[submodule "searxng-docker"]
+	path = searxng-docker
+	url = https://github.com/searxng/searxng-docker.git
