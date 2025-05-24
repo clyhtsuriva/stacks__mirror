@@ -1,0 +1,31 @@
+volumes:
+  grafana-data:
+    driver: local
+services:
+  grafana:
+    image: docker.io/grafana/grafana-oss:11.3.0
+    container_name: grafana
+    ports:
+      - 10.0.0.1:3000:3000
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - $PWD/custom.ini:/etc/grafana/grafana.ini
+    restart: unless-stopped
+    environment:
+      GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
+      GF_AUTH_GENERIC_OAUTH_NAME: authentik
+      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: 0M61k3ylqKnGDCSjPbHwtaoIFG6gfiD9crgnSseh
+      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: VkyB9lbMxxLCLCuy8GAEZTxiY5falzpPpEyUGpZaLu1Fuxl6fgScuaDcaZsmBWJLfOBKMkcqbVFfttZyUXQsUeWrghXqblia2K6ZJrwwFMtarTQcy3HLMRPTgUNPr7JN
+      GF_AUTH_GENERIC_OAUTH_SCOPES: openid profile email
+      GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://auth.adjutor.eu.org/application/o/authorize/
+      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://auth.adjutor.eu.org/application/o/token/
+      GF_AUTH_GENERIC_OAUTH_API_URL: https://auth.adjutor.eu.org/application/o/userinfo/
+      GF_AUTH_SIGNOUT_REDIRECT_URL: https://auth.adjutor.eu.org/application/o/grafana/end-session/
+      # Behind a reverse proxy :
+      GF_SERVER_ROOT_URL: "https://dash.adjutor.xyz"
+      # Optionally enable auto-login (bypasses Grafana login screen)
+      GF_AUTH_OAUTH_AUTO_LOGIN: "true"
+      # Optionally map user groups to Grafana roles
+      GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: contains(groups, 'Grafana Admins') &&
+        'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
+networks: {}

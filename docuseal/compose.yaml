@@ -1,0 +1,10 @@
+services:
+  docuseal:
+    container_name: docuseal
+    image: docuseal/docuseal:2.0.0
+    ports:
+      - 10.0.0.1:3030:3000
+    volumes:
+      - ./data-docuseal:/data
+    restart: unless-stopped
+networks: {}
