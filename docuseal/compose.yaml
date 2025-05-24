@@ -1,3 +1,4 @@
+---
 services:
   docuseal:
     container_name: docuseal
@@ -8,3 +9,4 @@ services:
       - ./data-docuseal:/data
     restart: unless-stopped
 networks: {}
+...

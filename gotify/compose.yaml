@@ -1,3 +1,4 @@
+---
 services:
   gotify:
     image: gotify/server:2.6.3
@@ -12,3 +13,4 @@ services:
     volumes:
       - ./gotify_data:/app/data
 networks: {}
+...

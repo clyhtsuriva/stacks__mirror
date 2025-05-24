@@ -1,3 +1,4 @@
+---
 services:
   postgresql:
     image: docker.io/library/postgres:16-alpine
@@ -87,3 +88,4 @@ volumes:
   redis:
     driver: local
 networks: {}
+...
