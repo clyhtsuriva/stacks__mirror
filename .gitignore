@@ -1,0 +1,16 @@
+# Ignore everything by default
+*
+
+# Allow directories, to track under folders
+!*/
+
+# Explicitly allow compose.yaml and dotfiles
+!compose.yaml
+!.*
+
+# Ignore specific directories
+privatebin/privatebin-data/
+roundcube/www/
+
+# Ignore .env explicitly
+.env
