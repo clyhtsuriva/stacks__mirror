@@ -1,6 +1,6 @@
 services:
   nginx-fpm-alpine:
-    image: privatebin/nginx-fpm-alpine:1.7.6
+    image: privatebin/nginx-fpm-alpine:1.7.7
     restart: unless-stopped
     read_only: true
     ports:
