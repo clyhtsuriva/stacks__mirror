@@ -1,8 +1,0 @@
-services:
-  whatsupdocker:
-    image: ghcr.io/getwud/wud
-    container_name: wud
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - 10.0.0.1:3002:3000
