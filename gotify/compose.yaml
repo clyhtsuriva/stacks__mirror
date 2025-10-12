@@ -1,7 +1,7 @@
 ---
 services:
   gotify:
-    image: gotify/server:2.7.2
+    image: gotify/server:2.7.3
     restart: unless-stopped
     ports:
       - 10.0.0.1:8082:80
