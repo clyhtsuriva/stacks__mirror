@@ -1,6 +1,6 @@
 services:
   syncthing:
-    image: ghcr.io/syncthing/syncthing:2.0.10
+    image: ghcr.io/syncthing/syncthing:2.0.11
     container_name: syncthing
     hostname: VPS
     environment:
