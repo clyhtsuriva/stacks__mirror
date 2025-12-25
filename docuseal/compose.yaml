@@ -2,7 +2,7 @@
 services:
   docuseal:
     container_name: docuseal
-    image: docuseal/docuseal:2.2.5
+    image: docuseal/docuseal:2.2.7
     ports:
       - 10.0.0.1:3030:3000
     volumes:
