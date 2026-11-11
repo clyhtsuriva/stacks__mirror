@@ -11,6 +11,7 @@
 # Ignore specific directories
 privatebin/privatebin-data/
 roundcube/www/
+immich-app/library
 
 # Ignore .env explicitly
 .env

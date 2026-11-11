@@ -1,6 +1,6 @@
 services:
   nginx-fpm-alpine:
-    image: privatebin/nginx-fpm-alpine:2.0.3
+    image: privatebin/nginx-fpm-alpine:2.1.1
     restart: unless-stopped
     read_only: true
     ports:
@@ -8,4 +8,7 @@ services:
     volumes:
       - $PWD/privatebin-data:/srv/data
       - $PWD/conf.php:/srv/cfg/conf.php:ro
+    tmpfs:
+      - /tmp
+      - /run:exec
 networks: {}

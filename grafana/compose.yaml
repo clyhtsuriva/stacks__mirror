@@ -5,7 +5,7 @@ volumes:
 
 services:
   grafana:
-    image: docker.io/grafana/grafana-oss:11.3.0
+    image: docker.io/grafana/grafana:13.1.0
     container_name: grafana
     ports:
       - 10.0.0.1:3000:3000
